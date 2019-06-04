@@ -38,7 +38,16 @@ export const store = new Vuex.Store({
     },
     SET_EVENTS: (state, events) => {
       state.events = events
+    },
+    CLEAR_FIELDS: state => {
+      state.userdata = null
+      state.username = null
+      state.password = null
     }
   },
-  actions: {}
+  actions: {
+    logout(context) {
+      context.commit('CLEAR_FIELDS')
+    }
+  }
 })

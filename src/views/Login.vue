@@ -8,7 +8,7 @@
               <h3 class="headline mb-0">{{ $t('login.sign_in') }}</h3>
             </div>
           </v-card-title>
-          <v-card-text>
+          <v-card-text v-if="!loading">
             <v-form>
               <v-text-field
                 v-model="username"
@@ -30,6 +30,7 @@
               <v-btn @click="signIn">{{ $t('login.btn') }}</v-btn>
             </v-form>
           </v-card-text>
+          <v-card-text v-else>{{ $t('other.loading') }}</v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
@@ -46,11 +47,13 @@ export default {
       showPass: false,
       username: null,
       password: null,
-      errors: null
+      errors: null,
+      loading: false
     }
   },
   methods: {
     signIn() {
+      this.loading = true
       api
         .authenticate(this.username, this.password)
         .then(res => {
@@ -62,6 +65,9 @@ export default {
           this.$router.push('/')
         })
         .catch(err => (this.errors = err.response.data.message))
+        .finally(() => {
+          this.loading = true
+        })
     }
   }
 }

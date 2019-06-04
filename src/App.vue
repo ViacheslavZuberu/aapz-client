@@ -7,7 +7,7 @@
             <v-icon>home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>{{ $t('menu.home') }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <!-- Account -->
@@ -18,7 +18,7 @@
         >
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-title>Account</v-list-tile-title>
+              <v-list-tile-title>{{ $t('menu.account') }}</v-list-tile-title>
             </v-list-tile>
           </template>
           <v-list-tile :to="{ path: '/login' }">
@@ -26,7 +26,7 @@
               <v-icon>assignment_ind</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Login</v-list-tile-title>
+              <v-list-tile-title>{{ $t('menu.login') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile :to="{ path: '/register' }">
@@ -34,21 +34,30 @@
               <v-icon>assignment_ind</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Register</v-list-tile-title>
+              <v-list-tile-title>{{ $t('menu.register') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list-group>
 
         <v-list-tile
-          v-for="(lang, i) in langs"
+          v-for="(item, i) in langs"
           :key="`Lang${i}`"
-          @click="$i18n.locale = lang"
+          @click="$i18n.locale = item.code"
         >
           <v-list-tile-action>
             <v-icon>language</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ lang }}</v-list-tile-title>
+            <v-list-tile-title>{{ item.lang }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-show="isLogged" @click="exit">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ $t('login.exit') }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -71,7 +80,10 @@ export default {
   name: 'App',
   data() {
     return {
-      langs: ['en', 'ukr'],
+      langs: [
+        { code: 'en', lang: 'English' },
+        { code: 'ukr', lang: 'Українська' }
+      ],
       year: new Date().getFullYear(),
       drawer: false
     }
@@ -79,6 +91,12 @@ export default {
   computed: {
     isLogged() {
       return this.$store.getters.LOGGED_IN
+    }
+  },
+  methods: {
+    exit() {
+      this.$store.dispatch('logout')
+      this.$router.replace('/')
     }
   }
 }

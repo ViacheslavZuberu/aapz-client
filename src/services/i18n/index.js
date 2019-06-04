@@ -10,6 +10,12 @@ const messages = {
       loading: 'Loading...',
       error: 'Error!'
     },
+    menu: {
+      home: 'Home',
+      account: 'Account',
+      login: 'Login',
+      register: 'Register'
+    },
     login: {
       registration: 'Registration',
       firstname: 'First name',
@@ -19,14 +25,15 @@ const messages = {
       username: 'Username',
       password: 'Password',
       btn: 'Sign In',
-      registerBtn: 'Register'
+      registerBtn: 'Register',
+      exit: 'Exit'
     },
     user: {
       title: 'User Info',
       username: 'Username',
       role: 'Role',
-      firstname: 'Firstname',
-      lastname: 'Lastname',
+      firstname: 'First Name',
+      lastname: 'Last Name',
       all: 'All Users'
     },
     events: {
@@ -39,6 +46,12 @@ const messages = {
       loading: 'Завантаження...',
       error: 'Помилка!'
     },
+    menu: {
+      home: 'Головна',
+      account: 'Обліковий запис',
+      login: 'Вхід',
+      register: 'Реєстрація'
+    },
     login: {
       sign_in: 'Вхід',
       username: 'Логін',
@@ -48,7 +61,8 @@ const messages = {
       firstname: "Ім'я",
       lastname: 'Прізвище',
       email: 'Пошта',
-      registerBtn: 'Зареєструватись'
+      registerBtn: 'Зареєструватись',
+      exit: 'Вихід'
     },
     user: {
       title: 'Панель користувача',
