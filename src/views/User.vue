@@ -1,11 +1,14 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex xs12 sm6>
+      <v-flex xs12 sm4>
         <UserData></UserData>
       </v-flex>
-      <v-flex xs12 sm6>
+      <v-flex xs12 sm8 v-show="role === 'Admin'">
         <AllUsers></AllUsers>
+      </v-flex>
+      <v-flex xs12 sm4>
+        <UserStats></UserStats>
       </v-flex>
     </v-layout>
   </v-container>
@@ -14,12 +17,19 @@
 <script>
 import UserData from '@/components/user/UserData'
 import AllUsers from '@/components/user/AllUsers'
+import UserStats from '@/components/user/UserStats'
 
 export default {
-  name: 'Admin',
+  name: 'User',
   components: {
     UserData,
-    AllUsers
+    AllUsers,
+    UserStats
+  },
+  computed: {
+    role() {
+      return this.$store.getters.ROLE
+    }
   }
 }
 </script>

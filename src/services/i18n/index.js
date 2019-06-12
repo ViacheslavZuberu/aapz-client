@@ -34,7 +34,10 @@ const messages = {
       role: 'Role',
       firstname: 'First Name',
       lastname: 'Last Name',
-      all: 'All Users'
+      all: 'All Users',
+      stats: 'User Statistics',
+      noData: 'No Data',
+      actions: 'Actions'
     },
     events: {
       all: 'All Events'
@@ -70,7 +73,10 @@ const messages = {
       role: 'Прівілеї',
       firstname: "Ім'я",
       lastname: 'Прізвище',
-      all: 'Усі користувачі'
+      all: 'Усі користувачі',
+      stats: 'Статистика Користувача',
+      noData: 'Дані відсутні',
+      actions: 'Дії'
     },
     events: {
       all: 'Усі заходи'

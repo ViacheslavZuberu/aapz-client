@@ -35,5 +35,10 @@ export default {
     return apiClient.delete(`/users/remove/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
+  },
+  getStats(token) {
+    return apiClient.get('/stats/visit', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
   }
 }

@@ -2,7 +2,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Test from '@/components/Test.vue'
-import Admin from '@/views/Admin.vue'
+import User from '@/views/User.vue'
 import Register from '@/views/Register.vue'
 import Vue from 'vue'
 
@@ -32,9 +32,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/admin',
-      name: 'admin',
-      component: Admin
+      path: '/home-page',
+      name: 'user',
+      component: User
     }
   ]
 })

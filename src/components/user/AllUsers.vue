@@ -31,29 +31,6 @@ export default {
   name: 'AllUsers',
   data() {
     return {
-      headers: [
-        {
-          text: 'ID',
-          sortable: false,
-          value: '_id'
-        },
-        {
-          text: 'Username',
-          value: 'username'
-        },
-        {
-          text: 'First Name',
-          value: 'firstname'
-        },
-        {
-          text: 'Last Name',
-          value: 'lastname'
-        },
-        {
-          text: 'Actions',
-          sortable: false
-        }
-      ],
       users: [],
       error: null,
       loading: true
@@ -61,6 +38,33 @@ export default {
   },
   created() {
     this.load()
+  },
+  computed: {
+    headers() {
+      return [
+        {
+          text: 'ID',
+          sortable: false,
+          value: '_id'
+        },
+        {
+          text: this.$t('login.username'),
+          value: 'username'
+        },
+        {
+          text: this.$t('user.firstname'),
+          value: 'firstname'
+        },
+        {
+          text: this.$t('user.lastname'),
+          value: 'lastname'
+        },
+        {
+          text: this.$t('user.actions'),
+          sortable: false
+        }
+      ]
+    }
   },
   methods: {
     load() {
