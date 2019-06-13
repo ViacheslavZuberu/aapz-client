@@ -4,6 +4,7 @@ import Login from '@/views/Login.vue'
 import Test from '@/components/Test.vue'
 import User from '@/views/User.vue'
 import Register from '@/views/Register.vue'
+import Events from '@/views/Events.vue'
 import Vue from 'vue'
 
 Vue.use(Router)
@@ -35,6 +36,11 @@ export default new Router({
       path: '/home-page',
       name: 'user',
       component: User
+    },
+    {
+      path: '/events',
+      name: 'event',
+      component: Events
     }
   ]
 })

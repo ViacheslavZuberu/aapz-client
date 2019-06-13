@@ -14,7 +14,8 @@ const messages = {
       home: 'Home',
       account: 'Account',
       login: 'Login',
-      register: 'Register'
+      register: 'Register',
+      events: 'Events'
     },
     login: {
       registration: 'Registration',
@@ -37,10 +38,15 @@ const messages = {
       all: 'All Users',
       stats: 'User Statistics',
       noData: 'No Data',
-      actions: 'Actions'
+      actions: 'Actions',
+      subEvents: 'Subscribed Events'
     },
     events: {
-      all: 'All Events'
+      all: 'All Events',
+      type: 'Type',
+      title: 'Title',
+      place: 'Place',
+      date: 'Date'
     }
   },
   ukr: {
@@ -53,7 +59,8 @@ const messages = {
       home: 'Головна',
       account: 'Обліковий запис',
       login: 'Вхід',
-      register: 'Реєстрація'
+      register: 'Реєстрація',
+      events: 'Заходи'
     },
     login: {
       sign_in: 'Вхід',
@@ -76,10 +83,15 @@ const messages = {
       all: 'Усі користувачі',
       stats: 'Статистика Користувача',
       noData: 'Дані відсутні',
-      actions: 'Дії'
+      actions: 'Дії',
+      subEvents: 'Підписки на заходи'
     },
     events: {
-      all: 'Усі заходи'
+      all: 'Усі заходи',
+      type: 'Тип',
+      title: 'Назва',
+      place: 'Місце',
+      date: 'Дата'
     }
   }
 }

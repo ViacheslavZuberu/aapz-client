@@ -11,17 +11,13 @@
           </v-list-tile-content>
         </v-list-tile>
         <!-- Account -->
-        <v-list-group
-          prepend-icon="account_circle"
-          value="true"
-          v-show="!isLogged"
-        >
+        <v-list-group prepend-icon="account_circle" value="true">
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-title>{{ $t('menu.account') }}</v-list-tile-title>
             </v-list-tile>
           </template>
-          <v-list-tile :to="{ path: '/login' }">
+          <v-list-tile :to="{ path: '/login' }" v-show="!isLogged">
             <v-list-tile-action>
               <v-icon>assignment_ind</v-icon>
             </v-list-tile-action>
@@ -29,12 +25,20 @@
               <v-list-tile-title>{{ $t('menu.login') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile :to="{ path: '/register' }">
+          <v-list-tile :to="{ path: '/register' }" v-show="!isLogged">
             <v-list-tile-action>
               <v-icon>assignment_ind</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{ $t('menu.register') }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile :to="{ path: '/events' }" v-show="isLogged">
+            <v-list-tile-action>
+              <v-icon>event</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ $t('menu.events') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list-group>
