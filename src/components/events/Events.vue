@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import api from '@/services/api-service'
-
 export default {
   props: ['title', 'events'],
   data() {
