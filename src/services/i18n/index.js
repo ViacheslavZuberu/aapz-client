@@ -46,7 +46,10 @@ const messages = {
       type: 'Type',
       title: 'Title',
       place: 'Place',
-      date: 'Date'
+      date: 'Date',
+      subscribe: 'Subscribe',
+      unsubscribe: 'Unsubscribe',
+      info: 'Event Info'
     }
   },
   ukr: {
@@ -91,7 +94,10 @@ const messages = {
       type: 'Тип',
       title: 'Назва',
       place: 'Місце',
-      date: 'Дата'
+      date: 'Дата',
+      subscribe: 'Записатися',
+      unsubscribe: 'Відписатися',
+      info: 'Інформація про Захід'
     }
   }
 }

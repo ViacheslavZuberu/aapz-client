@@ -11,6 +11,7 @@
 <script>
 import api from '@/services/api-service'
 import Events from '@/components/events/Events'
+import { formatDate } from '@/services/custom/dates'
 
 export default {
   components: {
@@ -42,9 +43,7 @@ export default {
         })
     },
     toDisplayTime(dateTime) {
-      let date = new Date(dateTime)
-
-      return date.toLocaleDateString()
+      return formatDate(dateTime)
     }
   },
   computed: {

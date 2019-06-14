@@ -11,6 +11,9 @@
           <td>{{ props.item.title }}</td>
           <td>{{ props.item.place }}</td>
           <td>{{ toDisplayTime(props.item.datetime) }}</td>
+          <td class="justify-center layout px-0">
+            <v-icon small @click="goToInfoPage(props.item)">info</v-icon>
+          </td>
         </template>
         <template v-slot:no-data>
           <p v-if="loading">{{ $t('other.loading') }}</p>
@@ -36,6 +39,9 @@ export default {
       let date = new Date(dateTime)
 
       return date.toLocaleDateString()
+    },
+    goToInfoPage(event) {
+      this.$router.push(`/event/${event._id}`)
     }
   },
   computed: {
@@ -60,6 +66,10 @@ export default {
           text: this.$t('events.date'),
           sortable: true,
           value: 'datetime'
+        },
+        {
+          text: this.$t('user.actions'),
+          sortable: false
         }
       ]
     }

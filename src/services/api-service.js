@@ -5,6 +5,7 @@ const apiClient = axios.create({
   headers: {
     'Access-Control-Allow-Headers':
       'Origin, Authorization, Accept, Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
     Accept: 'application/json',
     'Content-Type': 'application/json'
   }
@@ -32,6 +33,7 @@ export default {
       headers: { Authorization: `Bearer ${token}` }
     })
   },
+
   // Events
   getAllEvents(token) {
     return apiClient.get('/events', {
@@ -43,6 +45,22 @@ export default {
       headers: { Authorization: `Bearer ${token}` }
     })
   },
+  getEvent(token, id) {
+    return apiClient.get(`/events/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+  subscribe(token, id) {
+    return apiClient.post(`/events/subscribe/${id}`, null, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+  unsubscribe(token, id) {
+    return apiClient.post(`/events/unsubscribe/${id}`, null, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+
   // Stats
   getStats(token) {
     return apiClient.get('/stats/visit', {
