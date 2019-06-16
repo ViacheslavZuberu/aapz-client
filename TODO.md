@@ -1,11 +1,11 @@
 - [] Admin
   - [x] User List
   - [x] Delete User
-  - [] Events List
+  - [x] Events List
   - [] Deleteng Event
   - [] Editing Events
-- [] User
+- [x] User
   - [x] Registration
-  - [] Events List
-  - [] My Events
-  - [] User Stats
+  - [x] Events List
+  - [x] My Events
+  - [x] User Stats

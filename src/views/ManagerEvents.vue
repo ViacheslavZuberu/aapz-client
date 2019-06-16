@@ -12,14 +12,11 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn flat fab color="success">
-              <v-icon>add</v-icon>
-            </v-btn>
+            <new-event-dialog @update="load"></new-event-dialog>
             <v-btn flat fab color="primary" @click="load">
               <v-icon>refresh</v-icon>
             </v-btn>
           </v-toolbar>
-          <v-card-action></v-card-action>
           <v-card-text v-show="error">{{ error }}</v-card-text>
           <v-card-text v-if="!loading">
             <v-data-table
@@ -31,15 +28,16 @@
                 <td>{{ props.item.type }}</td>
                 <td>{{ props.item.title }}</td>
                 <td>{{ props.item.place }}</td>
-                <td>{{ toDisplayTime(props.item.datetime) }}</td>
+                <td>{{ formatDateTime(props.item.datetime, $i18n.locale) }}</td>
                 <td>{{ props.item.subscribers }}</td>
                 <td class="justify-center layout px-0">
                   <v-icon small @click="goToInfoPage(props.item)">info</v-icon>
                 </td>
               </template>
               <template v-slot:no-data>
-                <p v-if="loading">{{ $t('other.loading') }}</p>
-                <p v-else>{{ $t('user.noData') }}</p>
+                <v-alert :value="true" type="info">{{
+                  $t('user.noData')
+                }}</v-alert>
               </template>
             </v-data-table>
           </v-card-text>
@@ -54,14 +52,20 @@
 
 <script>
 import api from '@/services/api-service'
+import { formatDateTime } from '@/services/custom/dates'
+import NewEventDialog from '@/components/events/NewEventDialog'
 
 export default {
   data() {
     return {
       loading: false,
       events: [],
-      error: null
+      error: null,
+      dialog: false
     }
+  },
+  components: {
+    NewEventDialog
   },
   created() {
     this.load()
@@ -81,13 +85,9 @@ export default {
           this.loading = false
         })
     },
-    toDisplayTime(dateTime) {
-      let date = new Date(dateTime)
-
-      return date.toLocaleDateString()
-    },
+    formatDateTime,
     goToInfoPage(event) {
-      this.$router.push(`/event/${event._id}`)
+      this.$router.push(`/manager/events/${event._id}`)
     }
   },
   computed: {

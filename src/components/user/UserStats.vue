@@ -1,12 +1,14 @@
 <template>
-  <v-card>
+  <v-card height="100%">
     <v-card-title>
       <h2>{{ $t('user.stats') }}</h2>
     </v-card-title>
     <v-card-text v-show="error">{{ error }}</v-card-text>
     <v-card-text v-if="!loading">
       <stats-chart v-if="data" :chart-data="data"></stats-chart>
-      <p v-else>{{ $t('user.noData') }}</p>
+      <v-alert v-else :value="true" type="info">
+        {{ $t('user.noData') }}
+      </v-alert>
     </v-card-text>
     <v-card-text v-else>
       <v-progress-linear :indeterminate="true"></v-progress-linear>

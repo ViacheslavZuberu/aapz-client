@@ -33,8 +33,23 @@ export default {
       headers: { Authorization: `Bearer ${token}` }
     })
   },
+  upgradeUser(token, id) {
+    return apiClient.post(`/users/upgrade/${id}`, null, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+  downgradeUser(token, id) {
+    return apiClient.post(`/users/downgrade/${id}`, null, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
 
   // Events
+  createEvent(token, data) {
+    return apiClient.post('/events/create', data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
   getAllEvents(token) {
     return apiClient.get('/events', {
       headers: { Authorization: `Bearer ${token}` }
@@ -62,6 +77,16 @@ export default {
   },
   getManagerEvents(token) {
     return apiClient.get('/events/manager', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+  getManagerEvent(token, id) {
+    return apiClient.get(`/events/manager/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+  changeAttendance(token, attId, newStatus) {
+    return apiClient.post(`/events/change_att/${attId}/${newStatus}`, null, {
       headers: { Authorization: `Bearer ${token}` }
     })
   },

@@ -53,14 +53,27 @@ const messages = {
     },
     events: {
       all: 'All Events',
+      new: 'New Event',
       type: 'Type',
       title: 'Title',
+      time: 'Time',
       place: 'Place',
       date: 'Date',
       subscribe: 'Subscribe',
+      subscribedUsers: 'Subscribed Users',
       unsubscribe: 'Unsubscribe',
       info: 'Event Info',
-      subscribed: 'Subscribers'
+      subscribed: 'Subscribers',
+      attended: 'Attended',
+      status: 'Status'
+    },
+    rules: {
+      min3: 'Field is less than 3 chars',
+      empty: 'Field is empty'
+    },
+    actions: {
+      create: 'Create',
+      close: 'Close'
     }
   },
   ukr: {
@@ -113,14 +126,27 @@ const messages = {
     },
     events: {
       all: 'Усі заходи',
+      new: 'Новий захід',
       type: 'Тип',
       title: 'Назва',
+      time: 'Час',
       place: 'Місце',
       date: 'Дата',
       subscribe: 'Записатися',
+      subscribedUsers: 'Підписані користувачі',
       unsubscribe: 'Відписатися',
       info: 'Інформація про Захід',
-      subscribed: 'Підписалось'
+      subscribed: 'Підписалось',
+      attended: 'Відвідано',
+      status: 'Статус'
+    },
+    rules: {
+      min3: 'Рядок повинен містити більше ніж 3 символи',
+      empty: 'Поле повинно бути заповнено'
+    },
+    actions: {
+      create: 'Створити',
+      close: 'Закрити'
     }
   }
 }

@@ -29,82 +29,15 @@
           </v-toolbar>
 
           <v-card-text v-if="!loading && !error">
-            <v-list two-line>
-              <!-- Title -->
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-icon>title</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    {{ $t('events.title') }}
-                  </v-list-tile-title>
-                  <v-list-tile-sub-title>
-                    {{ event.title }}
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <!-- Type -->
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-icon>event</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ $t('events.type') }}</v-list-tile-title>
-                  <v-list-tile-sub-title>
-                    {{ event.type }}
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <!-- Place -->
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-icon>place</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    {{ $t('events.place') }}
-                  </v-list-tile-title>
-                  <v-list-tile-sub-title>
-                    {{ event.place }}
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <!-- Last Name -->
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-icon>date_range</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ $t('events.date') }}</v-list-tile-title>
-                  <v-list-tile-sub-title>
-                    {{ formatDate(event.datetime) }}
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <!-- Sunscribers Count -->
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-icon>people</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    {{ $t('events.subscribed') }}
-                  </v-list-tile-title>
-                  <v-list-tile-sub-title>
-                    {{ event.subscribers }}
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list>
+            <event :data="event"></event>
           </v-card-text>
           <v-card-text v-else>
             <v-progress-linear :indeterminate="true"></v-progress-linear>
           </v-card-text>
           <v-card-text v-show="error">
-            <v-alert :value="true" type="error">{{
-              $t('other.error')
-            }}</v-alert>
+            <v-alert :value="true" type="error">
+              {{ $t('other.error') }}
+            </v-alert>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -114,10 +47,13 @@
 
 <script>
 import api from '@/services/api-service'
-import { formatDate } from '@/services/custom/dates'
+import Event from '@/components/events/Event'
 
 export default {
   props: ['id'],
+  components: {
+    Event
+  },
   data() {
     return {
       loading: false,
@@ -173,7 +109,6 @@ export default {
           this.loading = false
         })
     },
-    formatDate,
     back() {
       this.$router.go(-1)
     }

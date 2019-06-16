@@ -1,17 +1,19 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex xs12 :class="userDataSize()">
+      <v-flex xs12 sm3>
         <UserData></UserData>
       </v-flex>
-      <v-flex xs12 sm8 v-show="role === 'Admin'">
-        <AllUsers></AllUsers>
-      </v-flex>
-      <v-flex xs12 sm4 :class="chartSize()">
+      <v-flex xs12 sm3>
         <UserStats></UserStats>
       </v-flex>
-      <v-flex xs12 :class="subEventsSize()">
+      <v-flex xs12 sm6>
         <Events :title="$t('user.subEvents')" :events="events"></Events>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap v-show="$store.getters.ROLE === 'Admin'">
+      <v-flex xs12>
+        <all-users></all-users>
       </v-flex>
     </v-layout>
   </v-container>

@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card height="100%">
     <v-card-title>
       <h2>{{ title }}</h2>
     </v-card-title>
@@ -10,22 +10,32 @@
           <td>{{ props.item.type }}</td>
           <td>{{ props.item.title }}</td>
           <td>{{ props.item.place }}</td>
-          <td>{{ toDisplayTime(props.item.datetime) }}</td>
+          <td>{{ formatDateTime(props.item.datetime, $i18n.locale) }}</td>
+          <td>
+            <v-checkbox
+              disabled
+              class="justify-center mt-3"
+              :input-value="props.item.attended"
+            ></v-checkbox>
+          </td>
           <td class="justify-center layout px-0">
             <v-icon small @click="goToInfoPage(props.item)">info</v-icon>
           </td>
         </template>
         <template v-slot:no-data>
-          <p v-if="loading">{{ $t('other.loading') }}</p>
-          <p v-else>{{ $t('user.noData') }}</p>
+          <v-alert :value="true" type="info">{{ $t('user.noData') }}</v-alert>
         </template>
       </v-data-table>
     </v-card-text>
-    <v-card-text v-else>{{ $t('other.loading') }}</v-card-text>
+    <v-card-text v-else>
+      <v-progress-linear :indeterminate="true"></v-progress-linear>
+    </v-card-text>
   </v-card>
 </template>
 
 <script>
+import { formatDateTime } from '@/services/custom/dates'
+
 export default {
   props: ['title', 'events'],
   data() {
@@ -35,11 +45,7 @@ export default {
     }
   },
   methods: {
-    toDisplayTime(dateTime) {
-      let date = new Date(dateTime)
-
-      return date.toLocaleDateString()
-    },
+    formatDateTime,
     goToInfoPage(event) {
       this.$router.push(`/event/${event._id}`)
     }
@@ -66,6 +72,11 @@ export default {
           text: this.$t('events.date'),
           sortable: true,
           value: 'datetime'
+        },
+        {
+          text: this.$t('events.attended'),
+          sortable: true,
+          value: 'attended'
         },
         {
           text: this.$t('user.actions'),

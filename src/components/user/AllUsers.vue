@@ -8,11 +8,29 @@
       <v-data-table :headers="headers" :items="users" class="elevation-1">
         <template v-slot:items="props">
           <td>{{ props.item._id }}</td>
-          <td class="text-xs-right">{{ props.item.username }}</td>
-          <td class="text-xs-right">{{ props.item.firstname }}</td>
-          <td class="text-xs-right">{{ props.item.lastname }}</td>
-          <td class="justify-center align-center layout px-0">
-            <v-icon small @click="deleteItem(props.item)">delete</v-icon>
+          <td>{{ props.item.username }}</td>
+          <td>{{ props.item.firstname }}</td>
+          <td>{{ props.item.lastname }}</td>
+          <td>{{ props.item.role }}</td>
+          <td class="justify-center align-center px-0">
+            <v-icon
+              v-show="props.item.role !== 'Admin'"
+              small
+              @click="deleteItem(props.item)"
+              >delete</v-icon
+            >
+            <v-icon
+              v-show="props.item.role === 'User'"
+              small
+              @click="upgradeUser(props.item)"
+              >arrow_upward</v-icon
+            >
+            <v-icon
+              v-show="props.item.role === 'Meetup Manager'"
+              small
+              @click="downgradeUser(props.item)"
+              >arrow_downward</v-icon
+            >
           </td>
         </template>
         <template v-slot:no-data>
@@ -62,6 +80,10 @@ export default {
           value: 'lastname'
         },
         {
+          text: this.$t('user.role'),
+          value: 'role'
+        },
+        {
           text: this.$t('user.actions'),
           sortable: false
         }
@@ -89,6 +111,26 @@ export default {
           .catch(err => (this.error = err))
           .finally(() => (this.loading = false))
       }
+    },
+    upgradeUser(item) {
+      this.loading = true
+      api
+        .upgradeUser(this.$store.getters.TOKEN, item._id)
+        .then(() => {
+          this.load()
+        })
+        .catch(err => (this.error = err))
+        .finally(() => (this.loading = false))
+    },
+    downgradeUser(item) {
+      this.loading = true
+      api
+        .downgradeUser(this.$store.getters.TOKEN, item._id)
+        .then(() => {
+          this.load()
+        })
+        .catch(err => (this.error = err))
+        .finally(() => (this.loading = false))
     }
   }
 }
