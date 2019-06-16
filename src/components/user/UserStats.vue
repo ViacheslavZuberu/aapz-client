@@ -8,7 +8,9 @@
       <stats-chart v-if="data" :chart-data="data"></stats-chart>
       <p v-else>{{ $t('user.noData') }}</p>
     </v-card-text>
-    <v-card-text v-else>{{ $t('other.loading') }}</v-card-text>
+    <v-card-text v-else>
+      <v-progress-linear :indeterminate="true"></v-progress-linear>
+    </v-card-text>
   </v-card>
 </template>
 

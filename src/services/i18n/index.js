@@ -6,6 +6,12 @@ Vue.use(VueI18n)
 const messages = {
   en: {
     visit_service: 'Visit Service',
+    main: {
+      title: 'Welcome to VService',
+      paragraph1:
+        'This service was created in order to make visiting easier and more flexible!',
+      paragraph2: 'You can eather become a visitor or the event host.'
+    },
     other: {
       loading: 'Loading...',
       error: 'Error!'
@@ -15,7 +21,11 @@ const messages = {
       account: 'Account',
       login: 'Login',
       register: 'Register',
-      events: 'Events'
+      events: 'Events',
+      managerEvents: 'My Events'
+    },
+    manager: {
+      eventsTitle: 'Events Management'
     },
     login: {
       registration: 'Registration',
@@ -49,11 +59,19 @@ const messages = {
       date: 'Date',
       subscribe: 'Subscribe',
       unsubscribe: 'Unsubscribe',
-      info: 'Event Info'
+      info: 'Event Info',
+      subscribed: 'Subscribers'
     }
   },
   ukr: {
     visit_service: 'Сервіс Відвідувань',
+    main: {
+      title: 'Ласкаво просимо до Сервісу Відвідувань',
+      paragraph1:
+        'Цей сервіс був створений для того, щоб зробити процес запису та відвідування заходів більш простим та гнучким!',
+      paragraph2:
+        'Ви можете стати звичайним користувачем або ж придбати акаунт менеджера заходів.'
+    },
     other: {
       loading: 'Завантаження...',
       error: 'Помилка!'
@@ -63,7 +81,11 @@ const messages = {
       account: 'Обліковий запис',
       login: 'Вхід',
       register: 'Реєстрація',
-      events: 'Заходи'
+      events: 'Заходи',
+      managerEvents: 'Мої заходи'
+    },
+    manager: {
+      eventsTitle: 'Керування заходами'
     },
     login: {
       sign_in: 'Вхід',
@@ -97,7 +119,8 @@ const messages = {
       date: 'Дата',
       subscribe: 'Записатися',
       unsubscribe: 'Відписатися',
-      info: 'Інформація про Захід'
+      info: 'Інформація про Захід',
+      subscribed: 'Підписалось'
     }
   }
 }

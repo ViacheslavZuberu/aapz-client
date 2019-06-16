@@ -60,6 +60,11 @@ export default {
       headers: { Authorization: `Bearer ${token}` }
     })
   },
+  getManagerEvents(token) {
+    return apiClient.get('/events/manager', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
 
   // Stats
   getStats(token) {

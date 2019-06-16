@@ -5,6 +5,7 @@ import Test from '@/components/Test.vue'
 import User from '@/views/User.vue'
 import Register from '@/views/Register.vue'
 import Events from '@/views/Events.vue'
+import ManagerEvents from '@/views/ManagerEvents.vue'
 import SingleEvent from '@/views/SingleEvent.vue'
 import Vue from 'vue'
 
@@ -48,6 +49,11 @@ export default new Router({
       name: 'event',
       component: SingleEvent,
       props: true
+    },
+    {
+      path: '/manager/events',
+      name: 'manager-events',
+      component: ManagerEvents
     }
   ]
 })

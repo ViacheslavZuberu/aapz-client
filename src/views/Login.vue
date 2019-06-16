@@ -30,7 +30,9 @@
               <v-btn @click="signIn">{{ $t('login.btn') }}</v-btn>
             </v-form>
           </v-card-text>
-          <v-card-text v-else>{{ $t('other.loading') }}</v-card-text>
+          <v-card-text v-else>
+            <v-progress-linear :indeterminate="true"></v-progress-linear>
+          </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>

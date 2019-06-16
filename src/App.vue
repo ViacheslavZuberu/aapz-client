@@ -41,6 +41,19 @@
               <v-list-tile-title>{{ $t('menu.events') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+          <v-list-tile
+            :to="{ path: '/manager/events' }"
+            v-show="hasManagerPerms"
+          >
+            <v-list-tile-action>
+              <v-icon>event</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{
+                $t('menu.managerEvents')
+              }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
         </v-list-group>
 
         <v-list-tile
@@ -74,7 +87,9 @@
       <router-view></router-view>
     </v-content>
     <v-footer color="indigo" app>
-      <v-flex class="white--text text-xs-center">&copy; {{ year }}</v-flex>
+      <v-flex class="white--text text-xs-center"
+        >&copy; Viacheslav Sheviakov - {{ year }}</v-flex
+      >
     </v-footer>
   </v-app>
 </template>
@@ -95,6 +110,12 @@ export default {
   computed: {
     isLogged() {
       return this.$store.getters.LOGGED_IN
+    },
+    hasManagerPerms() {
+      return (
+        this.$store.getters.ROLE === 'Admin' ||
+        this.$store.getters.ROLE === 'Meetup Manager'
+      )
     }
   },
   methods: {

@@ -11,13 +11,12 @@
       </v-flex>
 
       <v-flex mb-4>
-        <h1 class="display-2 font-weight-bold mb-3">Welcome to VService</h1>
+        <h1 class="display-2 font-weight-bold mb-3">{{ $t('main.title') }}</h1>
         <p class="subheading font-weight-regular">
-          This service was created in order to make visiting easier and more
-          flexible!
+          {{ $t('main.paragraph1') }}
         </p>
         <p class="subheading font-weight-regular">
-          You can eather become a visitor or the event host.
+          {{ $t('main.paragraph2') }}
         </p>
       </v-flex>
     </v-layout>

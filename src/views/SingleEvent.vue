@@ -82,9 +82,25 @@
                   </v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
+              <!-- Sunscribers Count -->
+              <v-list-tile>
+                <v-list-tile-action>
+                  <v-icon>people</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    {{ $t('events.subscribed') }}
+                  </v-list-tile-title>
+                  <v-list-tile-sub-title>
+                    {{ event.subscribers }}
+                  </v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
             </v-list>
           </v-card-text>
-          <v-card-text v-else>{{ $t('other.loading') }}</v-card-text>
+          <v-card-text v-else>
+            <v-progress-linear :indeterminate="true"></v-progress-linear>
+          </v-card-text>
           <v-card-text v-show="error">
             <v-alert :value="true" type="error">{{
               $t('other.error')

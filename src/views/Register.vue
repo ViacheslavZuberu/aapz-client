@@ -48,7 +48,9 @@
               <v-btn @click="register">{{ $t('login.registerBtn') }}</v-btn>
             </v-form>
           </v-card-text>
-          <v-card-text v-else>{{ $t('other.loading') }}</v-card-text>
+          <v-card-text v-else>
+            <v-progress-linear :indeterminate="true"></v-progress-linear>
+          </v-card-text>
           <v-card-text v-show="error">{{ error }}</v-card-text>
         </v-card>
       </v-flex>
