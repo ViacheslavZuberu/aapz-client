@@ -49,9 +49,9 @@
               <v-icon>event</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{
-                $t('menu.managerEvents')
-              }}</v-list-tile-title>
+              <v-list-tile-title>
+                {{ $t('menu.managerEvents') }}
+              </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list-group>
@@ -59,7 +59,7 @@
         <v-list-tile
           v-for="(item, i) in langs"
           :key="`Lang${i}`"
-          @click="$i18n.locale = item.code"
+          @click="changeLang(item.code)"
         >
           <v-list-tile-action>
             <v-icon>language</v-icon>
@@ -122,6 +122,10 @@ export default {
     exit() {
       this.$store.dispatch('logout')
       this.$router.replace('/')
+    },
+    changeLang(code) {
+      this.$i18n.locale = code
+      this.$vuetify.lang.current = code
     }
   }
 }

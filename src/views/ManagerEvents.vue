@@ -4,7 +4,7 @@
       <v-flex xs12 sm8 offset-sm2>
         <v-card>
           <v-toolbar card color="grey lighten-5">
-            <v-btn icon @click="back()">
+            <v-btn icon @click="$router.go(-1)">
               <v-icon>arrow_back</v-icon>
             </v-btn>
 

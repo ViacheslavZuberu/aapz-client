@@ -2,7 +2,11 @@
   <v-container>
     <v-layout row wrap>
       <v-flex xs12 sm8 offset-sm2>
-        <Events :title="$t('events.all')" :events="events"></Events>
+        <Events
+          :attendance="false"
+          :title="$t('events.all')"
+          :events="events"
+        ></Events>
       </v-flex>
     </v-layout>
   </v-container>

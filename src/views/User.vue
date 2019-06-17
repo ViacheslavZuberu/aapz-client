@@ -8,7 +8,11 @@
         <UserStats></UserStats>
       </v-flex>
       <v-flex xs12 sm6>
-        <Events :title="$t('user.subEvents')" :events="events"></Events>
+        <Events
+          :attendance="true"
+          :title="$t('user.subEvents')"
+          :events="events"
+        ></Events>
       </v-flex>
     </v-layout>
     <v-layout row wrap v-show="$store.getters.ROLE === 'Admin'">

@@ -11,7 +11,7 @@
           <td>{{ props.item.title }}</td>
           <td>{{ props.item.place }}</td>
           <td>{{ formatDateTime(props.item.datetime, $i18n.locale) }}</td>
-          <td>
+          <td v-show="attendance">
             <v-checkbox
               disabled
               class="justify-center mt-3"
@@ -37,7 +37,7 @@
 import { formatDateTime } from '@/services/custom/dates'
 
 export default {
-  props: ['title', 'events'],
+  props: ['title', 'events', 'attendance'],
   data() {
     return {
       loading: false,
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     headers() {
-      return [
+      let heads = [
         {
           text: this.$t('events.type'),
           sortable: true,
@@ -72,17 +72,23 @@ export default {
           text: this.$t('events.date'),
           sortable: true,
           value: 'datetime'
-        },
-        {
+        }
+      ]
+
+      if (this.attendance) {
+        heads.push({
           text: this.$t('events.attended'),
           sortable: true,
           value: 'attended'
-        },
-        {
-          text: this.$t('user.actions'),
-          sortable: false
-        }
-      ]
+        })
+      }
+
+      heads.push({
+        text: this.$t('user.actions'),
+        sortable: false
+      })
+
+      return heads
     }
   }
 }

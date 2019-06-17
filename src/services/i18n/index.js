@@ -74,6 +74,20 @@ const messages = {
     actions: {
       create: 'Create',
       close: 'Close'
+    },
+    $vuetify: {
+      dataIterator: {
+        rowsPerPageText: 'Items per page:',
+        rowsPerPageAll: 'All',
+        pageText: '{0}-{1} of {2}',
+        noResultsText: 'No matching records found',
+        nextPage: 'Next page',
+        prevPage: 'Previous page'
+      },
+      dataTable: {
+        rowsPerPageText: 'Rows per page:'
+      },
+      noDataText: 'No data available'
     }
   },
   ukr: {
@@ -147,6 +161,20 @@ const messages = {
     actions: {
       create: 'Створити',
       close: 'Закрити'
+    },
+    $vuetify: {
+      dataIterator: {
+        rowsPerPageText: 'Компонентів на сторінці:',
+        rowsPerPageAll: 'Усі',
+        pageText: '{0}-{1} з {2}',
+        noResultsText: 'Необхідних записів немає',
+        nextPage: 'Наступна сторінка',
+        prevPage: 'Попередня сторінка'
+      },
+      dataTable: {
+        rowsPerPageText: 'Рядків на сторінці:'
+      },
+      noDataText: 'Дані відсутні'
     }
   }
 }
