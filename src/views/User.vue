@@ -1,13 +1,13 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex xs12 sm3>
+      <v-flex sm6 xl3>
         <UserData></UserData>
       </v-flex>
-      <v-flex xs12 sm3>
+      <v-flex sm6 xl3>
         <UserStats></UserStats>
       </v-flex>
-      <v-flex xs12 sm6>
+      <v-flex sm12 xl6>
         <Events
           :attendance="true"
           :title="$t('user.subEvents')"
